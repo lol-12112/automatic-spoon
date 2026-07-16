@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Самая офигенная девушка ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff5fa2, #ff89c9, #ffd1e8);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+/* ===== INTRO HEART SCREEN ===== */
+#intro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ff2e7a, #ff6aa8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    animation: fadeOut 2s ease 3s forwards;
+}
+
+#intro .big-heart {
+    font-size: 200px;
+    animation: pulse 1s infinite;
+    filter: drop-shadow(0 0 20px white);
+}
+
+/* ===== CARD ===== */
+.card {
+    background: rgba(255,255,255,0.15);
+    padding: 40px;
+    border-radius: 25px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 25px rgba(255,255,255,0.4);
+    animation: pulse 2s infinite;
+    z-index: 2;
+    opacity: 0;
+    transform: scale(0.8);
+    animation: showCard 1.5s ease 3.2s forwards;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 1.4em;
+}
+
+/* floating hearts */
+.heart {
+    position: absolute;
+    color: rgba(255,255,255,0.8);
+    animation: floatUp linear infinite;
+    user-select: none;
+}
+
+@keyframes floatUp {
+    from { transform: translateY(100vh) scale(0.5); opacity: 1; }
+    to { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; visibility: hidden; }
+}
+
+@keyframes showCard {
+    to { opacity: 1; transform: scale(1); }
+}
+
+.glow {
+    animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #fff, 0 0 20px #ff99cc; }
+    to { text-shadow: 0 0 20px #fff, 0 0 40px #ff4da6; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+<div id="intro">
+    <div class="big-heart">❤️</div>
+</div>
+
+<!-- CARD -->
+<div class="card">
+    <h1 class="glow">💖 Самая офигенная девушка 💖</h1>
+    <p>Ты официально признана самой красивой, милой и лучшей ❤️</p>
+    <p>Создано специально для тебя 😘</p>
+    <p>ты со всем справишься</p>
+</div>
+
+<script>
+function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.innerHTML = '❤️';
+
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.fontSize = (Math.random() * 25 + 15) + 'px';
+    heart.style.animationDuration = (Math.random() * 5 + 4) + 's';
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 9000);
+}
+
+setInterval(createHeart, 250);
+</script>
+
+</body>
+</html>
